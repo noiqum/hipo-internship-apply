@@ -1,0 +1,88 @@
+@import "../../variables.scss";
+
+.form {
+  width: 100%;
+  height: 100%;
+  @include center;
+
+  form {
+    @include center;
+    padding: 3rem 1rem;
+    color: white;
+    font-size: 2rem;
+    border: 1px solid $gray-dark;
+    border-radius: 3px;
+    @include desktop {
+      width: 40rem;
+    }
+    @include tablet-med {
+      width: 50%;
+    }
+    @include tablet {
+      width: 60%;
+    }
+    @include mobile-med {
+      width: 80%;
+    }
+    @include mobile {
+      width: 90%;
+      min-width: 20rem;
+    }
+
+    & > input {
+      padding: 1rem 2rem;
+      border-radius: 6px;
+      border: none;
+      outline: none;
+      margin-top: 2rem;
+      width: 80%;
+      min-width: 80%;
+    }
+    & > .error {
+      border: 2px solid $red;
+      color: $red;
+    }
+    & > small {
+      color: $gray-light;
+      & > em {
+        color: $red;
+        text-decoration: none;
+      }
+    }
+    & > label {
+      margin-top: 1rem;
+    }
+    & > button {
+      padding: 1rem 2rem;
+      margin: 2rem;
+      border-radius: 6px;
+      border: none;
+      text-transform: capitalize;
+      letter-spacing: 1px;
+      &:hover {
+        background-color: $gray-dark;
+        color: white;
+      }
+      &:active {
+        transform: translateY(3px);
+        outline: none;
+      }
+    }
+    & span {
+      @include parag;
+      color: $gray-light;
+    }
+    & em {
+      text-decoration: underline;
+      color: $red;
+      cursor: pointer;
+    }
+  }
+  h2 {
+    color: white;
+    font-size: 3rem;
+    letter-spacing: 1.5px;
+    @include title;
+    margin: 2rem;
+  }
+}
