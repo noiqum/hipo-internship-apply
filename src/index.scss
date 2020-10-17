@@ -8,7 +8,11 @@ body {
   width: 100vw;
   height: 100vh;
 }
-
+.App {
+  width: 100vw;
+  height: 100vh;
+}
 @import "./variables.scss";
 @import "./components/loader/loader.scss";
 @import "./pages/main/main.scss";
+@import "./components/content/content.scss";
