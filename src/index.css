@@ -3,6 +3,10 @@
   padding: 0;
   box-sizing: border-box; }
 
+html,
+body {
+  font-size: 10px; }
+
 body {
   width: 100vw;
   height: 100vh; }
@@ -18,10 +22,8 @@ body {
   flex-direction: column;
   background-color: #0c0c0c;
   width: 100%;
-  height: 100%; }
-  @media screen and (max-width: 480px) {
-    .loader {
-      color: peru; } }
+  height: 100%;
+  color: peru; }
   .loader #logopath {
     stroke-dasharray: 130;
     stroke-dashoffset: 130;
@@ -94,3 +96,61 @@ body {
       line-height: 1.5; }
     .content main span {
       color: white; }
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  cursor: pointer;
+  position: relative;
+  margin: 5rem;
+  margin-top: 10rem; }
+  .button:hover .button__out {
+    width: 12rem;
+    height: 12rem;
+    border: 1px solid #e31c37; }
+  .button:hover .button__in {
+    width: 10rem;
+    height: 10rem;
+    background-color: #e31c37;
+    color: #0c0c0c;
+    transform: translate(-50%, -50%) rotate(0deg);
+    transform-origin: initial; }
+    .button:hover .button__in span {
+      transform: rotate(0deg); }
+  .button__out {
+    background-color: #0c0c0c;
+    border: 1px solid #474350;
+    width: 7rem;
+    height: 7rem;
+    display: inline-block;
+    border-radius: 6px;
+    transition: all 1.2s ease;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10; }
+  .button__in {
+    background-color: #474350;
+    border-radius: 6px;
+    width: 7rem;
+    height: 7rem;
+    transform-origin: center;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    z-index: 20;
+    transition: all 0.8s ease; }
+    .button__in span {
+      transform: rotate(-45deg);
+      text-rendering: geometricPrecision;
+      letter-spacing: 1px;
+      text-transform: uppercase; }

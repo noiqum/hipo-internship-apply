@@ -1,0 +1,62 @@
+@import "../../variables.scss";
+
+.button {
+  @include center;
+  cursor: pointer;
+  position: relative;
+  margin: 5rem;
+  margin-top: 10rem;
+  &:hover &__out {
+    width: 12rem;
+    height: 12rem;
+    border: 1px solid $red;
+  }
+  &:hover &__in {
+    width: 10rem;
+    height: 10rem;
+    background-color: $red;
+    color: $black;
+    transform: translate(-50%, -50%) rotate(0deg);
+    transform-origin: initial;
+    & span {
+      transform: rotate(0deg);
+    }
+  }
+
+  &__out {
+    background-color: $black;
+    border: 1px solid $gray-dark;
+    width: 7rem;
+    height: 7rem;
+    display: inline-block;
+    border-radius: 6px;
+    transition: all 1.2s ease;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+  }
+  &__in {
+    background-color: $gray-dark;
+    border-radius: 6px;
+    width: 7rem;
+    height: 7rem;
+    transform-origin: center;
+
+    color: white;
+    @include center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    z-index: 20;
+    transition: all 0.8s ease;
+    & span {
+      transform: rotate(-45deg);
+      text-rendering: geometricPrecision;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+  }
+}

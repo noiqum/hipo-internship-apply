@@ -1,31 +1,11 @@
 import React from 'react';
 import { ReactComponent as Hipo } from '../../hipo.svg';
 import { motion } from 'framer-motion';
+import Button from '../button/button';
+import { moveUp } from '../../utils/utils';
 
 function Content() {
-    const moveUp = {
-        animate: {
-            y: -30,
-            opacity: 1,
-            transition: {
-                duration: 1.5,
-                ease: "easeIn",
-                durationDelay: 6
-            }
-        },
-        initial: {
-            opacity: 0
-        },
-        exit: {
-            y: -20,
-            opacity: 0,
-            transition: {
-                duration: 2,
-                ease: "easeIn"
-            }
-        }
 
-    }
 
     return (
         <div className='content'>
@@ -41,6 +21,7 @@ function Content() {
                     Be <span>intern</span> at Hipo.
                 </p>
             </motion.main>
+            <Button title='apply' path='/auth' />
         </div>
     )
 }

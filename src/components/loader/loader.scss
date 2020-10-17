@@ -6,9 +6,8 @@
   width: 100%;
   height: 100%;
 
-  @include mobile {
-    color: peru;
-  }
+  color: peru;
+
   #logopath {
     stroke-dasharray: 130;
     stroke-dashoffset: 130;

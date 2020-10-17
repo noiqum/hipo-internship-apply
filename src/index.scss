@@ -3,7 +3,10 @@
   padding: 0;
   box-sizing: border-box;
 }
-
+html,
+body {
+  font-size: 10px;
+}
 body {
   width: 100vw;
   height: 100vh;
@@ -16,3 +19,4 @@ body {
 @import "./components/loader/loader.scss";
 @import "./pages/main/main.scss";
 @import "./components/content/content.scss";
+@import "./components/button/button.scss";
