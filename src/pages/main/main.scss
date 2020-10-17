@@ -1,0 +1,9 @@
+@import "../../variables.scss";
+
+.main {
+  p {
+    @include title;
+    font-size: 25px;
+    font-weight: bold;
+  }
+}

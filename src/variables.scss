@@ -10,6 +10,15 @@ $gray-light: #9a9a9a;
   flex-direction: column;
 }
 
+@mixin parag {
+  font-family: museo-slab, serif;
+  font-style: normal;
+}
+@mixin title {
+  font-family: azo-sans-web, sans-serif;
+  font-style: normal;
+}
+
 @mixin mobile {
   @media screen and (max-width: 480px) {
     @content;
