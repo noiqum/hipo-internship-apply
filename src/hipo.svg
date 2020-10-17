@@ -1,6 +1,6 @@
 
-<svg id="hipoLogoSVG2" width="200px" height="100px" viewBox="0 0 41 30" preserveAspectRatio="xMidYMid meet">
-			<path id="" fill="none" stroke="#E31C37" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="1" d="M7.62,20.918
+<svg id="hipologosvg" width="200px" height="100px" viewBox="0 0 41 30" preserveAspectRatio="xMidYMid meet">
+			<path id="logopath" fill="none" stroke="#E31C37" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="1" d="M7.62,20.918
 				c-1.751,0-1.988-0.188-2.13-0.455c-0.164-0.307-0.082-0.709,0.137-1.672c0.151-0.664,0.334-1.471,0.377-2.187
 				c-2.208-1.195-3.76-2.911-4.384-4.86c-0.655-2.051-0.117-3.292,0.403-4.49l0.111-0.259c0.095-0.227,0.21-0.421,0.316-0.6
 				c0.153-0.257,0.232-0.397,0.214-0.531C2.605,5.786,2.194,5.628,1.949,5.534c-0.6-0.23-1.28-0.491-1.418-1.137

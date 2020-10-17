@@ -9,7 +9,6 @@ body {
   height: 100vh;
 }
 
-$red: #e31c37;
-$black: #0c0c0c;
-$gray-dark: #474350;
-$gray-light: #9a9a9a;
+@import "./variables.scss";
+@import "./components/loader/loader.scss";
+@import "./pages/main/main.scss";

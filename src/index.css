@@ -6,3 +6,30 @@
 body {
   width: 100vw;
   height: 100vh; }
+
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #0c0c0c;
+  width: 100%;
+  height: 100%; }
+  @media screen and (max-width: 480px) {
+    .loader {
+      color: peru; } }
+  .loader #logopath {
+    stroke-dasharray: 130;
+    stroke-dashoffset: 130;
+    animation: loader-animate 2s ease forwards infinite alternate-reverse; }
+  .loader p {
+    opacity: 0;
+    animation: text-animate 2s ease forwards infinite alternate-reverse; }
+
+@keyframes loader-animate {
+  to {
+    stroke-dashoffset: 0; } }
+
+@keyframes text-animate {
+  to {
+    opacity: 1; } }
