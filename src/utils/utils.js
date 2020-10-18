@@ -1,3 +1,6 @@
+import { auth } from './../config/firebase.config';
+
+
 export const moveUp = {
     animate: {
         y: -30,
@@ -106,3 +109,4 @@ export const checkValidity = (value, type) => {
 
     return result;
 }
+

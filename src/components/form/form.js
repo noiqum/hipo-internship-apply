@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react'
+import { useHistory } from 'react-router-dom';
+import { auth, firestore } from '../../config/firebase.config';
 import { globalContext } from '../../context/globalContext';
-import { checkValidity } from '../../utils/utils';
+import { checkValidity, login } from '../../utils/utils';
 
 
 function Form() {
@@ -10,23 +12,63 @@ function Form() {
     const [password, setPassword] = useState('');
     const [error, setError] = useState({ name: null, email: null, password: null });
     const [signup, setSignup] = useState(false);
-    const {state,dispatch}=useContext(globalContext);
+    const {dispatch}=useContext(globalContext);
+    const [process,setProcess]=useState(false);
+    const [msg,setMsg]=useState(null)
+    const history=useHistory()
+    const createUser= async (email,password,name)=>{
+            try {
+                const newUserID= await auth.createUserWithEmailAndPassword(email,password).then((u)=>{return u.user.uid});
+                await firestore.collection('user').doc(newUserID).set({
+                    id:newUserID,
+                    name,
+                    email,
+                    applicationId:''
+                }).then(()=>{
+                    dispatch({
+                        type:'LOGIN_SUCCESS',
+                        user:{
+                                id:newUserID,
+                                email,
+                                name,
+                                applicationId:''
+                            }
+                    })
+                    setProcess(false)
+                })
+                
+            } catch (error) {
+                setMsg(error.message)
+            }
+    }
 
-    
-
+    const getUser= async( email,password)=>{
+            try {
+                await auth.signInWithEmailAndPassword(email,password).then((res)=>{
+                    if(res.user.uid){
+                        setProcess(false)
+                        history.push('/step-1')
+                    }
+                })
+                
+            } catch (error) {
+                setMsg(error.message)
+            }
+    }
 
     const submitHandler=(e)=>{
         e.preventDefault();
         if( signup && (error.name === null) && (error.email === null) && (error.password=== null)){
             if(email !== '' && name !== '' && password !== ''){
-                console.log('submit ready')
+                    createUser(email,password,name);
             }else{
                 alert('please fill the form')
             }
         }
         if(!signup && error.email === null && error.password === null){
             if(email !== '' && password !== ''){
-                console.log('submit ready');
+                setProcess(true);
+                getUser(email,password)
             }else{
                 alert('please fill the form')
             }
@@ -55,6 +97,8 @@ function Form() {
             
             <h2>{signup ? 'Register' : 'Log In'}</h2>
             <form>
+                {msg ? msg : null}
+                {process ? 'processing...' : null}
                 {signup ? <label htmlFor='name'>Name</label> : null}
                 {signup ? <input className={error.name ? 'error' :''} type='text' name='name' value={name} onChange={nameChangeHandler}></input> : null}
                 {error.name ? <small><em>*</em>{error.name}</small> : null}
