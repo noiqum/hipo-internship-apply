@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+import { globalContext } from '../../context/globalContext';
 import { checkValidity } from '../../utils/utils';
 
 
@@ -9,6 +10,10 @@ function Form() {
     const [password, setPassword] = useState('');
     const [error, setError] = useState({ name: null, email: null, password: null });
     const [signup, setSignup] = useState(false);
+    const {state,dispatch}=useContext(globalContext);
+
+    
+
 
     const submitHandler=(e)=>{
         e.preventDefault();

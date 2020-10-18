@@ -6,11 +6,14 @@ import {
   BrowserRouter as Router,
 
 } from "react-router-dom";
+import { GlobalProvider } from './context/globalContext';
 
 
 ReactDOM.render(
   <Router>
-    <App />
+    <GlobalProvider>
+      <App />
+    </GlobalProvider>
   </Router>
   ,
   document.getElementById('root')
