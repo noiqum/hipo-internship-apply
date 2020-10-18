@@ -15,15 +15,19 @@ function Form() {
         if( signup && (error.name === null) && (error.email === null) && (error.password=== null)){
             if(email !== '' && name !== '' && password !== ''){
                 console.log('submit ready')
+            }else{
+                alert('please fill the form')
             }
         }
         if(!signup && error.email === null && error.password === null){
             if(email !== '' && password !== ''){
                 console.log('submit ready');
+            }else{
+                alert('please fill the form')
             }
         }
         
-        return alert('please fill the form')
+        return 
     }
     const emailChangeHandler=(e)=>{
         setEmail(e.target.value);
