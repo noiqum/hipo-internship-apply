@@ -1,0 +1,50 @@
+@import "../../variables.scss";
+
+.periods {
+  @include center;
+  @include parag;
+
+  @media screen and (max-width: 540px) {
+    font-size: 1.5rem;
+  }
+
+  &__element {
+    @include center;
+    border: 1px solid $gray-light;
+    padding: 1rem;
+    border-radius: 15px;
+    & > div {
+      @include center;
+      width: 100%;
+      & > span:nth-child(1) {
+        text-transform: uppercase;
+        color: $gray-dark;
+        margin: 1rem;
+      }
+      & > button {
+        padding: 0.8rem 1rem;
+        border-radius: 10px;
+        width: 80%;
+        background-color: $red;
+        border: none;
+        outline: none;
+        letter-spacing: 2px;
+        margin: 1rem;
+        &:hover {
+          color: white;
+        }
+        &:active {
+          transform: translateY(3px);
+        }
+      }
+    }
+    &-position {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      & > span {
+        margin-left: 15px;
+      }
+    }
+  }
+}

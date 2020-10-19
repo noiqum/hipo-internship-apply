@@ -401,13 +401,16 @@ body {
 .step1 {
   background-color: #0c0c0c;
   width: 100%;
-  height: 100vh;
+  height: 200%;
   color: white;
   font-size: 25px;
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column; }
+  flex-direction: column;
+  padding: 1rem;
+  padding-bottom: 15rem;
+  overflow-y: scroll; }
   .step1 h2 {
     font-family: azo-sans-web, sans-serif;
     font-style: normal;
@@ -417,7 +420,9 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column; }
+  flex-direction: column;
+  font-family: museo-slab, serif;
+  font-style: normal; }
   @media screen and (max-width: 500px) {
     .positions {
       width: 80%; } }
@@ -460,3 +465,51 @@ body {
       .positions__table__row span:nth-child(2) {
         display: block;
         flex: 2; }
+
+.periods {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: museo-slab, serif;
+  font-style: normal; }
+  @media screen and (max-width: 540px) {
+    .periods {
+      font-size: 1.5rem; } }
+  .periods__element {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 1px solid #9a9a9a;
+    padding: 1rem;
+    border-radius: 15px; }
+    .periods__element > div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      width: 100%; }
+      .periods__element > div > span:nth-child(1) {
+        text-transform: uppercase;
+        color: #474350;
+        margin: 1rem; }
+      .periods__element > div > button {
+        padding: 0.8rem 1rem;
+        border-radius: 10px;
+        width: 80%;
+        background-color: #e31c37;
+        border: none;
+        outline: none;
+        letter-spacing: 2px;
+        margin: 1rem; }
+        .periods__element > div > button:hover {
+          color: white; }
+        .periods__element > div > button:active {
+          transform: translateY(3px); }
+    .periods__element-position {
+      display: flex;
+      justify-content: space-between;
+      align-items: center; }
+      .periods__element-position > span {
+        margin-left: 15px; }

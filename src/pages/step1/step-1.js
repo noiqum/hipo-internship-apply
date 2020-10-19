@@ -1,9 +1,10 @@
-import React, { useCallback, useContext, useEffect, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useLayoutEffect, useState } from 'react';
 import { motion } from 'framer-motion'
 import { auth, firestore } from '../../config/firebase.config';
 import { globalContext } from '../../context/globalContext';
 import axios from 'axios';
 import Positions from '../../components/positions/positions';
+import Periods from '../../components/periods/periods';
 function Step1() {
     const [positions, setPositions] = useState(null);
     const [periods, setPeriods] = useState(null)
@@ -49,7 +50,8 @@ function Step1() {
     }, [getUser])
 
 
-    useEffect(() => {
+
+    useLayoutEffect(() => {
         getPositions();
         getPeriods();
     }, [getPeriods, getPositions])
@@ -65,11 +67,7 @@ function Step1() {
             {positions ? <Positions positions={positions} /> : null}
             <h2>Open Periods to Apply</h2>
             {periods ?
-                <div>{
-                    periods.map((elm, index) => {
-                        return <li key={index}>id:{elm.id} name:{elm.name}</li>
-                    })
-                }</div> : null}
+                <Periods periods={periods} /> : null}
         </motion.div>
     )
 }
