@@ -1,14 +1,14 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Loader from '../../components/loader/loader';
 import { AnimatePresence } from "framer-motion"
 import Content from '../../components/content/content';
-import { auth } from '../../config/firebase.config';
-import { globalContext } from '../../context/globalContext';
+
+
 
 
 function Main() {
     const [loading, setLoading] = useState(true);
-    const { dispatch } = useContext(globalContext)
+
     useEffect(() => {
         setInterval(() => {
             setLoading(false)
