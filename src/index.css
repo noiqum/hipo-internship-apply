@@ -397,3 +397,14 @@ body {
     transform: translate(2px, 1px) rotate(0deg); }
   100% {
     transform: translate(1px, -2px) rotate(-1deg); } }
+
+.step1 {
+  background-color: #0c0c0c;
+  width: 100%;
+  height: 100vh;
+  color: white;
+  font-size: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; }
