@@ -7,4 +7,9 @@
   color: white;
   font-size: 25px;
   @include center;
+
+  h2 {
+    @include title;
+    margin: 2rem;
+  }
 }

@@ -1,0 +1,56 @@
+@import "../../variables.scss";
+
+.positions {
+  @include center;
+
+  @media screen and (max-width: 500px) {
+    width: 80%;
+  }
+  @media screen and (max-width: 800px) and (min-width: 500px) {
+    width: 70%;
+  }
+  @media screen and (min-width: 800px) and (max-width: 1000px) {
+    width: 60%;
+  }
+  @media screen and (min-width: 1000px) {
+    width: 40%;
+  }
+  &__title {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
+    background-color: $gray-light;
+    opacity: 0.85;
+    padding: 0.5rem 1rem;
+    & span:nth-child(1) {
+      display: block;
+      flex: 1;
+    }
+    & span:nth-child(2) {
+      display: block;
+      flex: 2;
+    }
+  }
+  &__table {
+    width: 100%;
+    &__row {
+      padding: 0.5rem 1rem;
+      width: 100%;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      flex-direction: row;
+
+      & span:nth-child(1) {
+        display: block;
+        flex: 1;
+      }
+      & span:nth-child(2) {
+        display: block;
+        flex: 2;
+      }
+    }
+  }
+}

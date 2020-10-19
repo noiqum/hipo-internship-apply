@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { auth, firestore } from '../../config/firebase.config';
 import { globalContext } from '../../context/globalContext';
 import axios from 'axios';
+import Positions from '../../components/positions/positions';
 function Step1() {
     const [positions, setPositions] = useState(null);
     const [periods, setPeriods] = useState(null)
@@ -61,12 +62,7 @@ function Step1() {
             className='step1'
         >
             <h2>Intern Positions</h2>
-            {positions ?
-                <div>{
-                    positions.map((elm, index) => {
-                        return <li key={index}>id:{elm.id} name:{elm.name}</li>
-                    })
-                }</div> : null}
+            {positions ? <Positions positions={positions} /> : null}
             <h2>Open Periods to Apply</h2>
             {periods ?
                 <div>{
