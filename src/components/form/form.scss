@@ -5,6 +5,15 @@
   height: 100%;
   @include center;
 
+  .hide {
+    & > input,
+    label,
+    button,
+    .sign {
+      animation: disappear 0.6s linear forwards;
+    }
+  }
+
   form {
     @include center;
     padding: 3rem 1rem;
@@ -12,6 +21,7 @@
     font-size: 2rem;
     border: 1px solid $gray-dark;
     border-radius: 3px;
+    transition: all 0.5s ease;
     @include desktop {
       width: 40rem;
     }
@@ -84,5 +94,12 @@
     letter-spacing: 1.5px;
     @include title;
     margin: 2rem;
+  }
+}
+
+@keyframes disappear {
+  100% {
+    transform: translateX(-15px);
+    opacity: 0;
   }
 }

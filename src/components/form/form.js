@@ -1,9 +1,10 @@
-import React, { useContext, useEffect, useState } from 'react'
+
+import React, { useContext, useState } from 'react'
 import { useHistory } from 'react-router-dom';
 import { auth, firestore } from '../../config/firebase.config';
 import { globalContext } from '../../context/globalContext';
-import { checkValidity, login } from '../../utils/utils';
-
+import { checkValidity} from '../../utils/utils';
+import Process from '../process/process';
 
 function Form() {
 
@@ -18,6 +19,7 @@ function Form() {
     const history=useHistory()
     const createUser= async (email,password,name)=>{
             try {
+                
                 const newUserID= await auth.createUserWithEmailAndPassword(email,password).then((u)=>{return u.user.uid});
                 await firestore.collection('user').doc(newUserID).set({
                     id:newUserID,
@@ -34,7 +36,8 @@ function Form() {
                                 applicationId:''
                             }
                     })
-                    setProcess(false)
+                    setProcess(false);
+                    history.push('/step-1')
                 })
                 
             } catch (error) {
@@ -55,12 +58,18 @@ function Form() {
                 setMsg(error.message)
             }
     }
+    
 
     const submitHandler=(e)=>{
         e.preventDefault();
         if( signup && (error.name === null) && (error.email === null) && (error.password=== null)){
             if(email !== '' && name !== '' && password !== ''){
-                    createUser(email,password,name);
+                    setProcess(true)
+                    const wait=()=>{
+                        setTimeout(()=>{createUser(email,password,name)},10000)
+                    }
+                    wait();
+                    
             }else{
                 alert('please fill the form')
             }
@@ -68,7 +77,11 @@ function Form() {
         if(!signup && error.email === null && error.password === null){
             if(email !== '' && password !== ''){
                 setProcess(true);
-                getUser(email,password)
+                const wait=()=>{
+                    setTimeout(()=>{getUser(email,password)},10000)
+                }
+                wait();
+                
             }else{
                 alert('please fill the form')
             }
@@ -96,9 +109,9 @@ function Form() {
             
             
             <h2>{signup ? 'Register' : 'Log In'}</h2>
-            <form>
+            <form className={process ? 'hide' : ''}>
                 {msg ? msg : null}
-                {process ? 'processing...' : null}
+                {process ? <Process/> : null}
                 {signup ? <label htmlFor='name'>Name</label> : null}
                 {signup ? <input className={error.name ? 'error' :''} type='text' name='name' value={name} onChange={nameChangeHandler}></input> : null}
                 {error.name ? <small><em>*</em>{error.name}</small> : null}
@@ -108,9 +121,9 @@ function Form() {
                 <label htmlFor="password">Password</label>
                 <input className={error.password ? 'error' : null} type="password" name="password" id="password" value={password}  onChange={passwordChangeHandler} placeholder='1 uppercase 1 special 1 number min 6'/>
                 {error.password ? <small><em>*</em>{error.password}</small> : null}
-                <button onClick={submitHandler} type='submit'>{signup ? 'Sign Up' : 'Log in'}</button>
+                <button disabled={process ? true : false} onClick={submitHandler} type='submit'>{signup ? 'Sign Up' : 'Log in'}</button>
                 {signup ? null :
-                 (<span>You Don't Have an Account ? <em onClick={()=>{setSignup(true)}}>Sign Up</em></span> )
+                 (<span className='sign'>You Don't Have an Account ? <em onClick={()=>{setSignup(true)}}>Sign Up</em></span> )
                 }
             </form>
             
