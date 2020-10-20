@@ -12,6 +12,11 @@ export const applicationReducer = (state = initialState, action) => {
                 ...state,
                 payload: { ...action.payload }
             }
+        case 'ADD_RESPONSE':
+            return {
+                ...state,
+                response: { ...action.response }
+            }
 
         default:
             return state;

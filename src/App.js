@@ -6,6 +6,7 @@ import Step1 from './pages/step1/step-1';
 import Step2 from './pages/step2/step-2';
 import Step3 from './pages/step3/step-3';
 import Step4 from './pages/step4/step4';
+import Down from './pages/error/down';
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
       <Switch>
         <Route path='/' exact component={Main}></Route>
         <Route path='/auth' component={Auth}></Route>
+        <Route path='/error' component={Down}></Route>
         <Route path='/step-1' component={Step1}></Route>
         <Route path='/step-2' component={Step2}></Route>
         <Route path='/step-3' component={Step3}></Route>

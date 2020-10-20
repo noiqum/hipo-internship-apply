@@ -14,7 +14,7 @@ function Step1() {
 
         const url = 'https://hipolabs.com/api/internship-positions/';
         axios.get(proxyurl + url).then(res => {
-            console.log(res.data)
+
             setPositions([...res.data])
         })
     }, [])

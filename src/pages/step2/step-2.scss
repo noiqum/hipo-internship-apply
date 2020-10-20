@@ -55,6 +55,9 @@
     }
     & > p {
       margin: 1.5rem;
+      a {
+        color: $red;
+      }
     }
     & > textarea {
       margin: 1rem;
