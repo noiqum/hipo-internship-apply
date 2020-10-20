@@ -1,0 +1,93 @@
+@import "../../variables.scss";
+
+.application {
+  @include center;
+  width: 100%;
+  height: auto;
+  background-color: $black;
+  color: white;
+  padding: 2rem;
+  & h2 {
+    @include title;
+    font-size: 3rem;
+    margin-top: 2rem;
+  }
+
+  &__form {
+    @include center;
+    font-size: 2rem;
+    width: 80%;
+    height: auto;
+    @include parag;
+
+    @media screen and (min-width: 580px) and (max-width: 800px) {
+      width: 60%;
+    }
+    @media screen and (min-width: 800px) and (max-width: 1000px) {
+      width: 40%;
+    }
+    @media screen and (min-width: 1000px) {
+      width: 30%;
+      font-size: 2.2rem;
+    }
+    & > label {
+      text-transform: uppercase;
+      color: $gray-light;
+    }
+    & > input {
+      width: 90%;
+      padding: 0.5rem 1rem;
+      border-radius: 3px;
+      border: none;
+      outline: none;
+      border: 1px solid $gray-light;
+      margin: 1rem;
+      @media screen and (min-width: 580px) and (max-width: 800px) {
+        padding: 1rem;
+      }
+      @media screen and (min-width: 800px) and (max-width: 1000px) {
+        padding: 1.3rem;
+      }
+      @media screen and (min-width: 1000px) {
+        padding: 1rem;
+        font-size: 2rem;
+      }
+    }
+    & > p {
+      margin: 1.5rem;
+    }
+    & > textarea {
+      margin: 1rem;
+      border: none;
+      border-radius: 5px;
+      padding: 2rem;
+      @media screen and (min-width: 1000px) {
+        font-size: 1.8rem;
+      }
+      &:focus {
+        outline: none;
+      }
+    }
+    & > button {
+      margin: 2rem;
+      border: none;
+      outline: none;
+      background-color: $red;
+      font-size: 2rem;
+      padding: 0.7rem 5rem;
+      border-radius: 5px;
+      &:hover {
+        color: white;
+      }
+      &:active {
+        transform: translateY(3px);
+      }
+    }
+    & > small {
+      color: $red;
+    }
+    & > .error {
+      background-color: rgba(231, 161, 161, 0.829);
+    }
+  }
+}

@@ -94,7 +94,18 @@ const checkPassword = (value) => {
         }
     }
 }
+const checkExist = (value) => {
 
+    if (value === '') {
+
+        return { valid: false, msg: 'this field is required' }
+    } else {
+        return {
+            valid: true,
+            msg: null
+        }
+    }
+}
 export const checkValidity = (value, type) => {
     let result;
     if (type === 'name') {
@@ -106,7 +117,33 @@ export const checkValidity = (value, type) => {
     if (type === 'password') {
         return result = checkPassword(value)
     }
+    if (type === 'cv') {
+        return result = checkExist(value)
+    }
+    if (type === 'notes') {
+        return result = checkExist(value)
+    }
 
     return result;
+}
+
+export const checkPayload = (payload) => {
+    let result = {
+        done: true,
+        error: null,
+        msg: ''
+    }
+    const fields = Object.entries(payload);
+    fields.forEach((elm) => {
+        if (checkExist(elm[1]).valid) {
+            return
+        } else {
+            result.done = false;
+            result.error = elm[0];
+            result.msg = `${elm[0]} is required`
+        }
+    })
+    return result;
+
 }
 
