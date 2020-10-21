@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect, useLayoutEffect, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
 import { motion } from 'framer-motion'
 import { auth, firestore } from '../../config/firebase.config';
 import { globalContext } from '../../context/globalContext';
@@ -6,9 +6,11 @@ import axios from 'axios';
 import Positions from '../../components/positions/positions';
 import Periods from '../../components/periods/periods';
 import { useHistory } from 'react-router-dom';
+import Loader from '../../components/loader/loader';
 function Step1() {
     const [positions, setPositions] = useState(null);
-    const [periods, setPeriods] = useState(null)
+    const [periods, setPeriods] = useState(null);
+    const [checking, setChecking] = useState(true);
     const { dispatch } = useContext(globalContext)
     const proxyurl = "https://cors-anywhere.herokuapp.com/";
     const history = useHistory();
@@ -41,10 +43,13 @@ function Step1() {
             if (userDB.applicationId !== '') {
                 history.push('/step-3');
             }
+            getPositions();
+            getPeriods();
+            setChecking(false)
         } catch (error) {
             console.log(error)
         }
-    }, [dispatch, history])
+    }, [dispatch, history, getPeriods, getPositions])
     useEffect(() => {
         auth.onAuthStateChanged((user) => {
             if (user) {
@@ -55,25 +60,20 @@ function Step1() {
         })
     }, [getUser])
 
-
-
-    useLayoutEffect(() => {
-        getPositions();
-        getPeriods();
-    }, [getPeriods, getPositions])
-
     return (
         <motion.div
             exit={{ x: 100, opacity: 0, transition: { duration: 2, ease: 'easeOut' } }}
             animate={{ x: 0, transition: { duration: 2, ease: 'easeOut' } }}
             initial={{ x: '100%' }}
             className='step1'
-        >
+        >   {checking ? <Loader text='Checking..' /> : <>
             <h2>Intern Positions</h2>
             {positions ? <Positions positions={positions} /> : null}
             <h2>Open Periods to Apply</h2>
             {periods ?
                 <Periods periods={periods} /> : null}
+        </>}
+
         </motion.div>
     )
 }

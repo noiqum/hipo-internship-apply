@@ -11,7 +11,7 @@ function Step3() {
             <p>Till 30/10/2020 you can update your application</p>
             <div className="step3__buttons">
                 <button>log out</button>
-                <button>update</button>
+                <button>Review and Update</button>
             </div>
         </div>
     )
