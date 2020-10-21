@@ -55,10 +55,10 @@ function Step1() {
             if (user) {
                 getUser(user.uid)
             } else {
-                console.log('nothing')
+                history.push('/')
             }
         })
-    }, [getUser])
+    }, [getUser, history])
 
     return (
         <motion.div

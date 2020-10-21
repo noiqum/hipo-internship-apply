@@ -165,7 +165,8 @@ function Step2() {
                     </form>
                 </>
             }
-            {user ? null : <Redirect to='/auth' />}
+
+            {user.id ? null : <Redirect to='/auth' />}
             {serverError ? <Redirect to={{ pathname: '/error', state: { fields: serverError.field, msgs: serverError.msg } }} /> : null}
         </div>
     )

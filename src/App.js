@@ -22,6 +22,7 @@ function App() {
         <Route path='/step-2' component={Step2}></Route>
         <Route path='/step-3' component={Step3}></Route>
         <Route path='/step-4' component={Step4}></Route>
+        <Route component={Main}></Route>
       </Switch>
     </div>
   );
