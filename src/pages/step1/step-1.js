@@ -5,11 +5,15 @@ import { globalContext } from '../../context/globalContext';
 import axios from 'axios';
 import Positions from '../../components/positions/positions';
 import Periods from '../../components/periods/periods';
+import { useHistory } from 'react-router-dom';
 function Step1() {
     const [positions, setPositions] = useState(null);
     const [periods, setPeriods] = useState(null)
     const { dispatch } = useContext(globalContext)
     const proxyurl = "https://cors-anywhere.herokuapp.com/";
+    const history = useHistory();
+
+
     const getPositions = useCallback(() => {
 
         const url = 'https://hipolabs.com/api/internship-positions/';
@@ -34,11 +38,13 @@ function Step1() {
                     ...userDB
                 }
             })
-
+            if (userDB.applicationId !== '') {
+                history.push('/step-3');
+            }
         } catch (error) {
             console.log(error)
         }
-    }, [dispatch])
+    }, [dispatch, history])
     useEffect(() => {
         auth.onAuthStateChanged((user) => {
             if (user) {

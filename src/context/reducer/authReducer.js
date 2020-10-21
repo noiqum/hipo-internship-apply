@@ -16,7 +16,8 @@ export const authReducer = (state = initialState, action) => {
                 ...state,
                 id: action.user.id,
                 email: action.user.email,
-                name: action.user.name
+                name: action.user.name,
+                applicationId: action.user.applicationId
             }
 
         default:
