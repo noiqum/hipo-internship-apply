@@ -3,8 +3,8 @@ import { useReducer } from 'react';
 import { authReducer } from './reducer/authReducer';
 import { applicationReducer } from './reducer/applicationReducer';
 const initialState = {
-    user: {
-
+    auth: {
+        name: ''
     },
     application: {
         payload: {},
