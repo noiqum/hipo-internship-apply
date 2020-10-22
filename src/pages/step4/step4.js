@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect, useState } from 'react'
+import React, { useCallback, useContext, useEffect, useRef, useState } from 'react'
 import { Redirect, useHistory } from 'react-router-dom';
 import { globalContext } from '../../context/globalContext';
 import axios from 'axios';
@@ -7,14 +7,18 @@ import { ReactComponent as Curly } from '../../svg/curly.svg';
 import { auth } from '../../config/firebase.config';
 import { motion } from 'framer-motion';
 import { moveUp } from '../../utils/utils';
-
+import Modal from '../../components/modal/modal';
 
 
 
 function Step4() {
     const { state } = useContext(globalContext);
     const [application, setApplication] = useState(initialUpdateState);
-    const history = useHistory()
+    const [process, setProcess] = useState(false);
+    const [height, setHeight] = useState(null)
+    const history = useHistory();
+    const step4Ref = useRef(null);
+
 
     const getApplication = useCallback(async (id) => {
         const url = corsURL + createAppUrl + id;
@@ -36,7 +40,9 @@ function Step4() {
     //     getApplication(state.auth.applicationId);
     // }, [getApplication, state.auth.applicationId])
     useEffect(() => {
-        getApplication('3362202869808363906')
+        getApplication('3362202869808363906');
+        setHeight(step4Ref.current.offsetHeight)
+        console.log(step4Ref.current);
     }, [getApplication])
 
     const changeHandler = (e) => {
@@ -50,14 +56,17 @@ function Step4() {
 
     const updateHandler = (e) => {
         e.preventDefault();
+        step4Ref.current.scrollTop = 0;
+        setProcess(true)
     }
 
 
     return (
-        <div className='step4' >
+        <div className='step4' ref={step4Ref} >
 
             {state === undefined ? <Redirect to='/' /> : null}
             {state.auth.id ? null : <Redirect to='/auth' />}
+            {process ? <Modal height={height} text='Updating' /> : null}
             <motion.div className="step4__form" variants={moveUp} animate='animate' exit='exit' initial='initial'>
                 <div>
                     <label htmlFor="id">Application ID</label>

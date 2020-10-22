@@ -9,6 +9,7 @@
   background-color: $black;
   color: white;
   padding: 2rem;
+
   @include parag;
   & > div {
     color: white;
