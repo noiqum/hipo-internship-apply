@@ -14,7 +14,9 @@ function Step3() {
         auth.signOut();
         history.push('/')
     }
-
+    const updateHandler = () => {
+        history.push('/step-4')
+    }
 
     return (
 
@@ -28,7 +30,7 @@ function Step3() {
             </div>
             <div className="step3__buttons">
                 <button onClick={logoutHandler} >log out</button>
-                <button>Review and Update</button>
+                <button onClick={updateHandler}>Review and Update</button>
             </div>
 
 

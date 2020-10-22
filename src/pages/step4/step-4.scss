@@ -1,0 +1,162 @@
+@import "../../variables.scss";
+
+.step4 {
+  @include center;
+  width: 100%;
+  height: auto;
+  min-height: 100vh;
+  font-size: 2rem;
+  background-color: $black;
+  color: white;
+  padding: 2rem;
+  @include parag;
+  & > div {
+    color: white;
+  }
+
+  &__form {
+    @include center;
+    & > div {
+      @include center;
+    }
+    & > div > label {
+      color: $gray-light;
+      font-size: 2.3rem;
+      text-transform: capitalize;
+      margin-right: 1rem;
+    }
+    & > div > input {
+      font-size: 2.3rem;
+      padding: 0.7rem 2rem;
+      border: none;
+      outline: none;
+      border-radius: 5px;
+      margin: 1.5rem;
+    }
+    &__position {
+      &__title {
+        color: $gray-light;
+        font-size: 2.3rem;
+        text-transform: uppercase;
+        margin: 1.5rem;
+      }
+      & > div {
+        & > label {
+          text-transform: capitalize;
+          border-bottom: 1px solid $gray-light;
+        }
+        & > p {
+          margin-top: 1rem;
+        }
+      }
+      & div:nth-child(2) {
+        border-left: 1px solid $gray-light;
+        padding: 1rem;
+      }
+    }
+    &__period {
+      & > div {
+        @include center;
+        flex-direction: row;
+        & > div:nth-child(1) {
+          @media screen and (max-width: 1000px) {
+            display: none;
+          }
+          width: 10%;
+          font-size: 3rem;
+          text-transform: uppercase;
+          margin-right: 2rem;
+        }
+        & > div:nth-child(2) {
+          @media screen and (max-width: 1000px) {
+            display: none;
+          }
+          width: 10%;
+          height: 100%;
+          margin-right: 2rem;
+          & > svg {
+            height: 40rem;
+          }
+        }
+        & > div:nth-child(3) {
+          @include center;
+          justify-content: flex-start;
+          align-items: flex-start;
+          width: 80%;
+          @media screen and (max-width: 1000px) {
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+          }
+          & > div {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            @media screen and (max-width: 1000px) {
+              flex-direction: column;
+            }
+            & > span {
+              margin-top: 1rem;
+              margin-right: 1rem;
+              padding: 1rem;
+            }
+            & > span:nth-child(1) {
+              border-right: 1px solid $gray-light;
+              @media screen and (max-width: 1000px) {
+                border-right: none;
+                border-bottom: 1px solid $gray-light;
+              }
+              @media screen and(min-width:1000px) {
+                min-width: 20rem;
+                display: inline-block;
+              }
+            }
+          }
+        }
+      }
+    }
+    & textarea {
+      columns: 30;
+      padding: 1rem;
+      font-size: 1.8rem;
+      @media screen and (min-width: 1000px) {
+        columns: 40;
+        border-radius: 5px;
+        column-width: 2px;
+      }
+    }
+    & #buttons {
+      margin-top: 2rem;
+      flex-direction: row;
+      justify-content: space-between;
+      width: 100%;
+      margin-bottom: 4rem;
+      @media screen and (min-width: 1000px) {
+        justify-content: space-evenly;
+      }
+    }
+    &__buttons {
+      & button {
+        width: 9rem;
+        height: 3rem;
+        border-radius: 5px;
+        border: none;
+        outline: none;
+        letter-spacing: 1px;
+        background-color: $red;
+        color: white;
+        &:hover {
+          background-color: $gray-dark;
+          color: white;
+        }
+        &:active {
+          transform: translateY(3px);
+        }
+        @media screen and (min-width: 1000px) {
+          height: 4rem;
+          width: 11rem;
+        }
+      }
+    }
+  }
+}

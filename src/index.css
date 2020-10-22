@@ -673,3 +673,148 @@ body {
         color: white; }
       .step3__buttons button:active {
         transform: translateY(3px); }
+
+.step4 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: auto;
+  min-height: 100vh;
+  font-size: 2rem;
+  background-color: #0c0c0c;
+  color: white;
+  padding: 2rem;
+  font-family: museo-slab, serif;
+  font-style: normal; }
+  .step4 > div {
+    color: white; }
+  .step4__form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; }
+    .step4__form > div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column; }
+    .step4__form > div > label {
+      color: #9a9a9a;
+      font-size: 2.3rem;
+      text-transform: capitalize;
+      margin-right: 1rem; }
+    .step4__form > div > input {
+      font-size: 2.3rem;
+      padding: 0.7rem 2rem;
+      border: none;
+      outline: none;
+      border-radius: 5px;
+      margin: 1.5rem; }
+    .step4__form__position__title {
+      color: #9a9a9a;
+      font-size: 2.3rem;
+      text-transform: uppercase;
+      margin: 1.5rem; }
+    .step4__form__position > div > label {
+      text-transform: capitalize;
+      border-bottom: 1px solid #9a9a9a; }
+    .step4__form__position > div > p {
+      margin-top: 1rem; }
+    .step4__form__position div:nth-child(2) {
+      border-left: 1px solid #9a9a9a;
+      padding: 1rem; }
+    .step4__form__period > div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      flex-direction: row; }
+      .step4__form__period > div > div:nth-child(1) {
+        width: 10%;
+        font-size: 3rem;
+        text-transform: uppercase;
+        margin-right: 2rem; }
+        @media screen and (max-width: 1000px) {
+          .step4__form__period > div > div:nth-child(1) {
+            display: none; } }
+      .step4__form__period > div > div:nth-child(2) {
+        width: 10%;
+        height: 100%;
+        margin-right: 2rem; }
+        @media screen and (max-width: 1000px) {
+          .step4__form__period > div > div:nth-child(2) {
+            display: none; } }
+        .step4__form__period > div > div:nth-child(2) > svg {
+          height: 40rem; }
+      .step4__form__period > div > div:nth-child(3) {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        width: 80%; }
+        @media screen and (max-width: 1000px) {
+          .step4__form__period > div > div:nth-child(3) {
+            justify-content: center;
+            align-items: center;
+            flex-direction: column; } }
+        .step4__form__period > div > div:nth-child(3) > div {
+          display: flex;
+          justify-content: flex-start;
+          align-items: center; }
+          @media screen and (max-width: 1000px) {
+            .step4__form__period > div > div:nth-child(3) > div {
+              flex-direction: column; } }
+          .step4__form__period > div > div:nth-child(3) > div > span {
+            margin-top: 1rem;
+            margin-right: 1rem;
+            padding: 1rem; }
+          .step4__form__period > div > div:nth-child(3) > div > span:nth-child(1) {
+            border-right: 1px solid #9a9a9a; }
+            @media screen and (max-width: 1000px) {
+              .step4__form__period > div > div:nth-child(3) > div > span:nth-child(1) {
+                border-right: none;
+                border-bottom: 1px solid #9a9a9a; } }
+            @media screen and (min-width: 1000px) {
+              .step4__form__period > div > div:nth-child(3) > div > span:nth-child(1) {
+                min-width: 20rem;
+                display: inline-block; } }
+    .step4__form textarea {
+      columns: 30;
+      padding: 1rem;
+      font-size: 1.8rem; }
+      @media screen and (min-width: 1000px) {
+        .step4__form textarea {
+          columns: 40;
+          border-radius: 5px;
+          column-width: 2px; } }
+    .step4__form #buttons {
+      margin-top: 2rem;
+      flex-direction: row;
+      justify-content: space-between;
+      width: 100%;
+      margin-bottom: 4rem; }
+      @media screen and (min-width: 1000px) {
+        .step4__form #buttons {
+          justify-content: space-evenly; } }
+    .step4__form__buttons button {
+      width: 9rem;
+      height: 3rem;
+      border-radius: 5px;
+      border: none;
+      outline: none;
+      letter-spacing: 1px;
+      background-color: #e31c37;
+      color: white; }
+      .step4__form__buttons button:hover {
+        background-color: #474350;
+        color: white; }
+      .step4__form__buttons button:active {
+        transform: translateY(3px); }
+      @media screen and (min-width: 1000px) {
+        .step4__form__buttons button {
+          height: 4rem;
+          width: 11rem; } }
