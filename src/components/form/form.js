@@ -5,6 +5,7 @@ import { auth, firestore } from '../../config/firebase.config';
 import { globalContext } from '../../context/globalContext';
 import { checkValidity} from '../../utils/utils';
 import Process from '../process/process';
+import {motion} from 'framer-motion';
 
 function Form() {
 
@@ -105,7 +106,12 @@ function Form() {
         setError({...error,password:result.msg})
     }
     return (
-        <div className='form' >
+        <motion.div 
+        className='form'
+        exit={{ x: '-100%', transition: { duration: 2, ease: 'easeOut' } }}
+        animate={{ x: 0, transition: { duration: 2, ease: 'easeOut' } }}
+        initial={{ x: '100%' }}
+        >
             
             
             <h2>{signup ? 'Register' : 'Log In'}</h2>
@@ -127,7 +133,7 @@ function Form() {
                 }
             </form>
             
-        </div>
+        </motion.div>
     )
 }
 

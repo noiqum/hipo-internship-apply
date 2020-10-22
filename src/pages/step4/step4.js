@@ -4,6 +4,9 @@ import { globalContext } from '../../context/globalContext';
 import axios from 'axios';
 import { corsURL, createAppUrl, initialUpdateState } from '../../utils/utils';
 import { ReactComponent as Curly } from '../../svg/curly.svg';
+import { auth } from '../../config/firebase.config';
+import { motion } from 'framer-motion';
+import { moveUp } from '../../utils/utils';
 
 
 
@@ -36,23 +39,37 @@ function Step4() {
         getApplication('3362202869808363906')
     }, [getApplication])
 
+    const changeHandler = (e) => {
+        setApplication({ ...application, [e.target.name]: e.target.value })
+    }
+
+    const logoutHandler = () => {
+        auth.signOut();
+        history.push('/');
+    }
+
+    const updateHandler = (e) => {
+        e.preventDefault();
+    }
+
+
     return (
-        <div className='step4'>
+        <div className='step4' >
 
             {state === undefined ? <Redirect to='/' /> : null}
             {state.auth.id ? null : <Redirect to='/auth' />}
-            <div className="step4__form">
+            <motion.div className="step4__form" variants={moveUp} animate='animate' exit='exit' initial='initial'>
                 <div>
                     <label htmlFor="id">Application ID</label>
                     <p>{application.id}</p>
                 </div>
                 <div>
                     <label htmlFor="name">name</label>
-                    <input type="text" value={application.name} />
+                    <input name='name' type="text" value={application.name} onChange={changeHandler} />
                 </div>
                 <div>
                     <label htmlFor="email">email</label>
-                    <input type="text" value={application.email} />
+                    <input name='email' type="text" value={application.email} onChange={changeHandler} />
                 </div>
                 <div className='step4__form__position'>
                     <div className='step4__form__position__title'>position</div>
@@ -100,17 +117,17 @@ function Step4() {
                 </div>
                 <div>
                     <label htmlFor="cv">cv</label>
-                    <input type="text" value={application.cv} />
+                    <input name='cv' type="text" value={application.cv} onChange={changeHandler} />
                 </div>
                 <div>
                     <label htmlFor="notes">notes</label>
-                    <textarea cols='30' rows='10' value={application.notes} />
+                    <textarea name='notes' cols='30' rows='10' value={application.notes} onChange={changeHandler} />
                 </div>
                 <div id='buttons' className="step4__form__buttons">
-                    <button>Log Out</button>
-                    <button>Update</button>
+                    <button onClick={logoutHandler}>Log Out</button>
+                    <button onClick={updateHandler} >Update</button>
                 </div>
-            </div>
+            </motion.div>
 
         </div>
     )

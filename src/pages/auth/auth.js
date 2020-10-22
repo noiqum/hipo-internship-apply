@@ -14,9 +14,7 @@ function Auth() {
     return (
         <motion.div
             className='auth'
-            exit={{ x: '-100%', transition: { duration: 2, ease: 'easeOut' } }}
-            animate={{ x: 0, transition: { duration: 2, ease: 'easeOut' } }}
-            initial={{ x: '100%' }}
+
         >
             {date ? <Form /> : <p>Application Process ended 30/10/2020 ,follow us ,we will announce next sessions</p>}
         </motion.div>

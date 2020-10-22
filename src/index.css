@@ -402,7 +402,6 @@ body {
 .step1 {
   background-color: #0c0c0c;
   width: 100%;
-  height: 200%;
   color: white;
   font-size: 25px;
   display: flex;
@@ -416,6 +415,9 @@ body {
     font-family: azo-sans-web, sans-serif;
     font-style: normal;
     margin: 2rem; }
+
+.height {
+  height: 200%; }
 
 .positions {
   display: flex;
@@ -691,6 +693,7 @@ body {
   .step4 > div {
     color: white; }
   .step4__form {
+    margin-top: 3rem;
     display: flex;
     justify-content: center;
     align-items: center;

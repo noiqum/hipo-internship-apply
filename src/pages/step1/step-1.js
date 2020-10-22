@@ -7,6 +7,7 @@ import Positions from '../../components/positions/positions';
 import Periods from '../../components/periods/periods';
 import { useHistory } from 'react-router-dom';
 import Loader from '../../components/loader/loader';
+import { timeBreak, moveUp } from '../../utils/utils';
 function Step1() {
     const [positions, setPositions] = useState(null);
     const [periods, setPeriods] = useState(null);
@@ -41,11 +42,13 @@ function Step1() {
                 }
             })
             if (userDB.applicationId !== '') {
+                setChecking(false)
                 history.push('/step-3');
+
             }
             getPositions();
             getPeriods();
-            setChecking(false)
+            timeBreak(() => { setChecking(false) }, 3000)
         } catch (error) {
             console.log(error)
         }
@@ -62,17 +65,19 @@ function Step1() {
 
     return (
         <motion.div
-            exit={{ x: 100, opacity: 0, transition: { duration: 2, ease: 'easeOut' } }}
-            animate={{ x: 0, transition: { duration: 2, ease: 'easeOut' } }}
-            initial={{ x: '100%' }}
-            className='step1'
-        >   {checking ? <Loader text='Checking..' /> : <>
-            <h2>Intern Positions</h2>
-            {positions ? <Positions positions={positions} /> : null}
-            <h2>Open Periods to Apply</h2>
-            {periods ?
-                <Periods periods={periods} /> : null}
-        </>}
+            className={checking ? 'step1' : 'step1 height'}
+        >
+            {checking ? <Loader text="checking..." /> :
+                <motion.div variants={moveUp} animate='animate' exit='exit' initial='initial'>
+                    <h2>Intern Positions</h2>
+                    {positions ? <Positions positions={positions} /> : null}
+                    <h2>Open Periods to Apply</h2>
+                    {periods ?
+                        <Periods periods={periods} /> : null}
+                </motion.div >
+            }
+
+
 
         </motion.div>
     )

@@ -147,7 +147,7 @@ export const checkPayload = (payload) => {
 
 }
 export const timeBreak = (cl, time, ...args) => {
-    setTimeout(() => { cl(args) }, time)
+    setTimeout(() => { return cl(args) }, time)
 }
 
 export const createAppUrl = 'https://hipolabs.com/api/internship-applications/';
