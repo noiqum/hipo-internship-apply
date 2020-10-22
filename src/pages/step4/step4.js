@@ -26,7 +26,7 @@ function Step4() {
             .then(
                 res => res.data
             ).catch(error => {
-
+                console.log(error)
                 if (error.response.status === 404) {
                     history.push('/error', { fields: [''], msgs: ['Application could nt find'] })
                 } else {
@@ -36,14 +36,11 @@ function Step4() {
             })
         setApplication({ ...applicationResponse })
     }, [history])
-    // useEffect(() => {
-    //     getApplication(state.auth.applicationId);
-    // }, [getApplication, state.auth.applicationId])
     useEffect(() => {
-        getApplication('3362202869808363906');
+        getApplication(state.auth.applicationId);
         setHeight(step4Ref.current.offsetHeight)
-        console.log(step4Ref.current);
-    }, [getApplication])
+    }, [getApplication, state.auth.applicationId])
+
 
     const changeHandler = (e) => {
         setApplication({ ...application, [e.target.name]: e.target.value })
@@ -54,10 +51,43 @@ function Step4() {
         history.push('/');
     }
 
+    const updateApplication = async (id) => {
+        const position = application.position.id;
+        const selected_periods = application.selected_periods.map((e) => { return e.id });
+        const data = {
+            name: application.name,
+            email: application.email,
+            position,
+            selected_periods,
+            cv: application.cv,
+            notes: application.notes
+        }
+        const url = corsURL + createAppUrl + id + '/';
+        await axios.put(url, data)
+            .then(res => {
+                console.log(res.data)
+                setApplication(res.data)
+            })
+            .then(() => {
+
+                setProcess(false)
+            })
+            .catch(error => {
+
+                if (error.response.status === 404) {
+                    history.push('/error', { fields: [''], msgs: ['Application could nt find'] })
+                } else {
+                    history.push('/error', { fields: [''], msgs: ['something happened', error.message] })
+                }
+
+            })
+    }
+
     const updateHandler = (e) => {
         e.preventDefault();
         step4Ref.current.scrollTop = 0;
         setProcess(true)
+        updateApplication(application.id)
     }
 
 

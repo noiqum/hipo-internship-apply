@@ -844,7 +844,10 @@ body {
     flex-direction: column;
     width: 40rem;
     height: 5rem;
-    background-color: white;
+    background-image: linear-gradient(to right, #e31c37 0% 50%, white 50% 100%);
+    background-size: 200%;
+    background-position: 100%;
+    animation: fill 10s linear infinite;
     color: black; }
     @media screen and (min-width: 660px) and (max-width: 800px) {
       .modal__bar {
@@ -856,4 +859,12 @@ body {
       .modal__bar {
         width: 30rem; } }
     .modal__bar span {
-      font-size: 3rem; }
+      font-size: 3rem;
+      color: #0c0c0c;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 2px; }
+
+@keyframes fill {
+  to {
+    background-position: 0%; } }
