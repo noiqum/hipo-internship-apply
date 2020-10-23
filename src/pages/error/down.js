@@ -6,6 +6,7 @@ function Down() {
     const location = useLocation()
     const fields = location.state.fields;
     const msgs = location.state.msgs
+    console.log(location)
     return (
         <div className='down'>
             <p>Opps There is an Error</p>
@@ -16,7 +17,7 @@ function Down() {
                 return <p>Message: {elm}</p>
             })}
             <a href="/">HomePage</a>
-            <a href='/'>Log In</a>
+            <a href='/auth'>Log In</a>
         </div>
     )
 }

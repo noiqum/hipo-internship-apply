@@ -29,7 +29,8 @@ function Step4() {
                 console.log(error)
                 if (error.response.status === 404) {
                     history.push('/error', { fields: [''], msgs: ['Application could nt find'] })
-                } else {
+                }
+                else {
                     history.push('/error', { fields: [''], msgs: ['something happened', error.message] })
                 }
 
@@ -73,9 +74,12 @@ function Step4() {
                 setProcess(false)
             })
             .catch(error => {
-
+                console.log(error)
+                console.log(error.response)
                 if (error.response.status === 404) {
                     history.push('/error', { fields: [''], msgs: ['Application could nt find'] })
+                } if (error.response.status === 400) {
+                    history.push('/error', { fields: Object.keys(error.response.data.detail), msgs: Object.values(error.response.data.detail) })
                 } else {
                     history.push('/error', { fields: [''], msgs: ['something happened', error.message] })
                 }
@@ -155,7 +159,7 @@ function Step4() {
                     })}
                 </div>
                 <div>
-                    <label htmlFor="cv">cv</label>
+                    <label htmlFor="cv">cv *<small>Please replace with base64 version</small></label>
                     <input name='cv' type="text" value={application.cv} onChange={changeHandler} />
                 </div>
                 <div>
