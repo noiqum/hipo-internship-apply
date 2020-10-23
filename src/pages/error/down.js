@@ -16,6 +16,7 @@ function Down() {
                 return <p>Message: {elm}</p>
             })}
             <a href="/">HomePage</a>
+            <a href='/'>Log In</a>
         </div>
     )
 }

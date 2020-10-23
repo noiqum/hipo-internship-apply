@@ -883,4 +883,5 @@ body {
     text-decoration: none;
     color: #e31c37;
     padding: 1rem;
-    border-bottom: 1px solid #9a9a9a; }
+    border-bottom: 1px solid #9a9a9a;
+    margin: 1rem; }
