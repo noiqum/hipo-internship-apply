@@ -6,7 +6,7 @@ function Down() {
     const location = useLocation()
     const fields = location.state.fields;
     const msgs = location.state.msgs
-    console.log(location)
+
     return (
         <div className='down'>
             <p>Opps There is an Error</p>

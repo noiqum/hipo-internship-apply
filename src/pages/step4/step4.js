@@ -26,7 +26,7 @@ function Step4() {
             .then(
                 res => res.data
             ).catch(error => {
-                console.log(error)
+
                 if (error.response.status === 404) {
                     history.push('/error', { fields: [''], msgs: ['Application could nt find'] })
                 }
@@ -66,7 +66,7 @@ function Step4() {
         const url = corsURL + createAppUrl + id + '/';
         await axios.put(url, data)
             .then(res => {
-                console.log(res.data)
+
                 setApplication(res.data)
             })
             .then(() => {
@@ -74,8 +74,7 @@ function Step4() {
                 setProcess(false)
             })
             .catch(error => {
-                console.log(error)
-                console.log(error.response)
+
                 if (error.response.status === 404) {
                     history.push('/error', { fields: [''], msgs: ['Application could nt find'] })
                 } if (error.response.status === 400) {

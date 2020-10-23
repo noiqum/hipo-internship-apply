@@ -50,7 +50,7 @@ function Step1() {
             getPeriods();
             timeBreak(() => { setChecking(false) }, 3000)
         } catch (error) {
-            console.log(error)
+            history.push('/error', { fields: [''], msgs: 'something went wrong' })
         }
     }, [dispatch, history, getPeriods, getPositions])
     useEffect(() => {
