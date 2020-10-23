@@ -868,3 +868,19 @@ body {
 @keyframes fill {
   to {
     background-position: 0%; } }
+
+.down {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #0c0c0c;
+  color: white;
+  width: 100%;
+  height: 100%;
+  font-size: 3rem; }
+  .down a {
+    text-decoration: none;
+    color: #e31c37;
+    padding: 1rem;
+    border-bottom: 1px solid #9a9a9a; }

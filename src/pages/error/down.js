@@ -4,18 +4,18 @@ import { useLocation } from 'react-router-dom'
 function Down() {
 
     const location = useLocation()
-    const fields = location.state.fields;
-    const msgs = location.state.msgs
+    // const fields = location.state.fields;
+    // const msgs = location.state.msgs
     return (
         <div className='down'>
             <p>Opps There is an Error</p>
-            {fields.map((elm) => {
+            {/* {fields.map((elm) => {
                 return <p key={fields[elm]}> field:{elm}</p>
             })}
             {msgs.map((elm) => {
                 return <p>Message: {elm}</p>
-            })}
-            <a href="/">HomePAge</a>
+            })} */}
+            <a href="/">HomePage</a>
         </div>
     )
 }
